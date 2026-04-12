@@ -1,112 +1,179 @@
 # Homework
 
-## Topic 4. Arrays
+## Topic 6: Arrays and Object Methods
 
 ---
 
-## Task 1. Slug Generator
+## Task 1. Packing Goods
 
-Complete this task in the file `task-1.js`
+**COMPLETE THIS TASK IN THE FILE `task-1.js`**
 
-Before solving the task, let’s define a new term!
-The term slug is a human-readable unique identifier used in web development to create readable URLs.
-For example, instead of seeing `mysite.com/posts/1q8fh74tx`, you can create a slug from the article title. As a result, the URL becomes more user-friendly: `mysite.com/posts/arrays-for-begginers`.
+Write a function `isEnoughCapacity(products, containerSize)` that determines whether all goods will fit into a container.
 
-A slug is always a lowercase string where words are separated by hyphens.
-Got it? Now let’s finally solve the task!
+The function has two parameters:
 
-Write a function `slugify(title)` that takes an article title as a parameter `title` and returns a slug created from that string.
-The value of `title` will be a string where words are separated only by spaces.
-All characters in the slug must be lowercase.
-All words in the slug must be separated by hyphens.
+* `products` — an object where keys are product names and values are their quantities. For example: `{ apples: 2, grapes: 4 }`.
+* `containerSize` — a number representing the maximum number of product units the container can hold.
 
-Take the code below and insert it after your function declaration to verify correctness. The results will be printed in the console.
+The function should return the result of checking whether all goods will fit into the container. That is, calculate the total number of items in the `products` object and return `true` if it is less than or equal to `containerSize`, otherwise return `false`.
 
-```javascript
-console.log(slugify("Arrays for begginers")); // "arrays-for-begginers"
-console.log(slugify("English for developer")); // "english-for-developer"
-console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
-console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
+Use the code below after declaring your function to verify its correctness. The results of the function calls will be logged to the console.
+
+```js
+console.log(
+  isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)
+); // true
+
+console.log(
+  isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)
+); // false
+
+console.log(
+  isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)
+); // true
+
+console.log(
+  isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)
+); // false
 ```
 
 Leave this code for mentor review.
 
 ### What the mentor will check:
 
-* The function `slugify(title)` is declared
-* Calling `slugify("Arrays for begginers")` returns "arrays-for-begginers"
-* Calling `slugify("English for developer")` returns "english-for-developer"
-* Calling `slugify("Ten secrets of JavaScript")` returns "ten-secrets-of-javascript"
-* Calling `slugify("How to become a JUNIOR developer in TWO WEEKS")` returns "how-to-become-a-junior-developer-in-two-weeks"
+* The function `isEnoughCapacity(products, containerSize)` is declared
+* `isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)` returns `true`
+* `isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)` returns `false`
+* `isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)` returns `true`
+* `isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)` returns `false`
 
 ---
 
-## Task 2. Array Composition
+## Task 2. Calorie Calculation
 
-Complete this task in the file `task-2.js`
+**COMPLETE THIS TASK IN THE FILE `task-2.js`**
 
-Write a function called `makeArray` that takes three parameters: `firstArray` (array), `secondArray` (array), and `maxLength` (number). The function should create a new array containing all elements from `firstArray`, followed by all elements from `secondArray`.
+Write a function `calcAverageCalories(days)` that returns the average daily number of calories consumed by an athlete during a week.
 
-If the number of elements in the new array exceeds `maxLength`, the function should return a copy of the array with a length of `maxLength` elements.
-Otherwise, it should return the entire new array.
+The function expects one parameter:
 
-Take the code below and insert it after your function declaration to verify correctness. The results will be printed in the console.
+* `days` — an array of objects. Each object describes a day of the week and the number of calories (`calories`) consumed on that day.
 
-```javascript
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
-console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
-console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+Use the code below after declaring your function to verify correctness. The results will be logged to the console.
+
+```js
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 3010 },
+    { day: "tuesday", calories: 3200 },
+    { day: "wednesday", calories: 3120 },
+    { day: "thursday", calories: 2900 },
+    { day: "friday", calories: 3450 },
+    { day: "saturday", calories: 3280 },
+    { day: "sunday", calories: 3300 }
+  ])
+); // 3180
+
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 2040 },
+    { day: "tuesday", calories: 2270 },
+    { day: "wednesday", calories: 2420 },
+    { day: "thursday", calories: 1900 },
+    { day: "friday", calories: 2370 },
+    { day: "saturday", calories: 2280 },
+    { day: "sunday", calories: 2610 }
+  ])
+); // 2270
+
+console.log(
+  calcAverageCalories([])
+); // 0
 ```
 
 Leave this code for mentor review.
 
 ### What the mentor will check:
 
-* The function `makeArray(firstArray, secondArray, maxLength)` is declared
-* Calling `makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)` returns ["Mango", "Poly", "Ajax"]
-* Calling `makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)` returns ["Mango", "Poly", "Houston", "Ajax"]
-* Calling `makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)` returns ["Mango", "Ajax", "Chelsea"]
-* Calling `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)` returns ["Earth", "Jupiter"]
-* Calling `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)` returns ["Earth", "Jupiter", "Neptune", "Uranus"]
-* Calling `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)` returns []
-* Calling `makeArray()` with random arrays and a random number returns the correct array
+* The function `calcAverageCalories(days)` is declared
+
+* The following call returns `3180`:
+
+```js
+calcAverageCalories([
+  { day: "monday", calories: 3010 },
+  { day: "tuesday", calories: 3200 },
+  { day: "wednesday", calories: 3120 },
+  { day: "thursday", calories: 2900 },
+  { day: "friday", calories: 3450 },
+  { day: "saturday", calories: 3280 },
+  { day: "sunday", calories: 3300 }
+]);
+```
+
+* The following call returns `2270`:
+
+```js
+calcAverageCalories([
+  { day: "monday", calories: 2040 },
+  { day: "tuesday", calories: 2270 },
+  { day: "wednesday", calories: 2420 },
+  { day: "thursday", calories: 1900 },
+  { day: "friday", calories: 2370 },
+  { day: "saturday", calories: 2280 },
+  { day: "sunday", calories: 2610 }
+]);
+```
+
+* The following call returns `0`:
+
+```js
+calcAverageCalories([]);
+```
 
 ---
 
-## Task 3. Filtering an Array of Numbers
+## Task 3. Player Profile
 
-Complete this task in the file `task-3.js`
+**COMPLETE THIS TASK IN THE FILE `task-3.js`**
 
-Write a function `filterArray(numbers, value)` that takes an array of numbers (`numbers`) and a value (`value`) as parameters. The function should return a new array containing only the numbers from `numbers` that are greater than `value`.
+The `profile` object describes a user's profile on a gaming platform. It contains the username and the number of active hours (`playTime`) spent in the game.
 
-Inside the function:
+```js
+const profile = {
+  username: "Jacob",
+  playTime: 300,
+};
+```
 
-* Create an empty array to store matching numbers.
-* Use a loop to iterate through each element of the `numbers` array.
-* Use an `if` statement inside the loop to check each element and add it to your array.
-* Return the new array with the matching numbers.
+Extend the `profile` object with methods to work with its properties:
 
-Take the code below and insert it after your function declaration to verify correctness. The results will be printed in the console.
+* `changeUsername(newName)` — takes a string (`newName`) and updates the `username` property. Does not return anything.
+* `updatePlayTime(hours)` — takes a number (`hours`) and increases the `playTime` by this value. Does not return anything.
+* `getInfo()` — returns a string in the format:
+  `<Username> has <amount> active hours!`
+  where `<Username>` is the profile name and `<amount>` is the number of hours played.
 
-```javascript
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+Use the code below after declaring your object to verify correctness:
+
+```js
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
 ```
 
 Leave this code for mentor review.
 
 ### What the mentor will check:
 
-* The function `filterArray(numbers, value)` is declared
-* Calling `filterArray([1, 2, 3, 4, 5], 3)` returns [4, 5]
-* Calling `filterArray([1, 2, 3, 4, 5], 4)` returns [5]
-* Calling `filterArray([1, 2, 3, 4, 5], 5)` returns []
-* Calling `filterArray([12, 24, 8, 41, 76], 38)` returns [41, 76]
-* Calling `filterArray([12, 24, 8, 41, 76], 20)` returns [24, 41, 76]
-* Calling `filterArray()` with random data returns the correct array
+* The variable `profile` is declared
+* `profile` is an object with properties: `username`, `playTime`, `getInfo`, `changeUsername`, `updatePlayTime`
+* `getInfo` is a function
+* `changeUsername` is a function
+* `updatePlayTime` is a function
+* The `this` keyword is used inside object methods to access properties
+
